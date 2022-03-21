@@ -3,7 +3,11 @@ import math
 
 from discord import Color, Embed, Forbidden, NotFound, HTTPException
 
-import _emojis as emojis
+
+PREV = "⬅️"
+NEXT = "➡️"
+FIRST = "⏮️"
+LAST = "⏭️"
 
 class Paginator:
     def __init__(self, ctx, player) -> None:
@@ -71,10 +75,10 @@ class Paginator:
 
             if total_pages > 1:
                 try:
-                    await msg.add_reaction(emojis.FIRST)
-                    await msg.add_reaction(emojis.PREV)
-                    await msg.add_reaction(emojis.NEXT)
-                    await msg.add_reaction(emojis.LAST)
+                    await msg.add_reaction(FIRST)
+                    await msg.add_reaction(PREV)
+                    await msg.add_reaction(NEXT)
+                    await msg.add_reaction(LAST)
                 except (HTTPException, Forbidden, NotFound, TypeError) as e:
                     print(e)
                     pass
