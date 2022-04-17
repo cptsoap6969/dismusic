@@ -4,6 +4,7 @@ import async_timeout
 import wavelink
 from discord import ClientException
 from discord.ext import commands
+from discord.ext.commands import has_role
 from wavelink import (
     LavalinkException,
     LoadTrackError,
@@ -106,6 +107,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=["con"])
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def connect(self, ctx: commands.Context):
         """Connect the player"""
         if ctx.voice_client:
@@ -126,6 +128,7 @@ class Music(commands.Cog):
 
     @commands.group(aliases=["p"], invoke_without_command=True)
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def play(self, ctx: commands.Context, *, query: str):
         """Play or add song to queue (Defaults to YouTube)"""
         await ctx.invoke(self.connect)
@@ -133,6 +136,7 @@ class Music(commands.Cog):
 
     @play.command(aliases=["yt"])
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def youtube(self, ctx: commands.Context, *, query: str):
         """Play a YouTube track"""
         await ctx.invoke(self.connect)
@@ -140,6 +144,7 @@ class Music(commands.Cog):
 
     @play.command(aliases=["ytmusic"])
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def youtubemusic(self, ctx: commands.Context, *, query: str):
         """Play a YouTubeMusic track"""
         await ctx.invoke(self.connect)
@@ -147,6 +152,7 @@ class Music(commands.Cog):
 
     @play.command(aliases=["sc"])
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def soundcloud(self, ctx: commands.Context, *, query: str):
         """Play a SoundCloud track"""
         await ctx.invoke(self.connect)
@@ -154,6 +160,7 @@ class Music(commands.Cog):
 
     @play.command(aliases=["sp"])
     @voice_connected()
+    @has_role(953451079398486027,951243230152917003)
     async def spotify(self, ctx: commands.Context, *, query: str):
         """play a spotify track"""
         await ctx.invoke(self.connect)
@@ -161,6 +168,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=["vol"])
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def volume(self, ctx: commands.Context, vol: int, forced=False):
         """Set volume"""
         player: DisPlayer = ctx.voice_client
@@ -176,6 +184,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=["disconnect", "dc"])
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def stop(self, ctx: commands.Context):
         """Stop the player"""
         player: DisPlayer = ctx.voice_client
@@ -186,6 +195,7 @@ class Music(commands.Cog):
 
     @commands.command()
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def pause(self, ctx: commands.Context):
         """Pause the player"""
         player: DisPlayer = ctx.voice_client
@@ -202,6 +212,7 @@ class Music(commands.Cog):
 
     @commands.command()
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def resume(self, ctx: commands.Context):
         """Resume the player"""
         player: DisPlayer = ctx.voice_client
@@ -218,6 +229,7 @@ class Music(commands.Cog):
 
     @commands.command()
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def skip(self, ctx: commands.Context):
         """Skip to next song in the queue."""
         player: DisPlayer = ctx.voice_client
@@ -232,6 +244,7 @@ class Music(commands.Cog):
 
     @commands.command()
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def seek(self, ctx: commands.Context, seconds: int):
         """Seek the player backward or forward"""
         player: DisPlayer = ctx.voice_client
@@ -253,6 +266,7 @@ class Music(commands.Cog):
 
     @commands.command()
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def loop(self, ctx: commands.Context, loop_type: str = None):
         """Set loop to `NONE`, `CURRENT` or `PLAYLIST`"""
         player: DisPlayer = ctx.voice_client
@@ -262,6 +276,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=["q"])
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def queue(self, ctx: commands.Context):
         """Player queue"""
         player: DisPlayer = ctx.voice_client
@@ -274,6 +289,7 @@ class Music(commands.Cog):
 
     @commands.command(aliases=["np"])
     @voice_channel_player()
+    @has_role(953451079398486027,951243230152917003)
     async def nowplaying(self, ctx: commands.Context):
         """Currently playing song information"""
         player: DisPlayer = ctx.voice_client
